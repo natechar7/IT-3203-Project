@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PWA Architecture - Progressive Web Apps</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation menu -->
+    <nav class="main-nav">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="fundamentals.html">Fundamentals</a></li>
+            <li><a href="architecture.html" class="active">Architecture</a></li>
+            <li><a href="concepts.html">Key Concepts</a></li>
+            <li><a href="references.html">References</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="quiz.html">Quiz</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main content -->
+    <main class="container">
+        <header class="page-header">
+            <h1>PWA Architecture & Design Patterns</h1>
+        </header>
+
+        <!-- App Shell Architecture -->
+        <section>
+            <h2>App Shell Architecture</h2>
+            <p>
+                The app shell architecture is a design concept that separates the application's core infrastructure 
+                from the content. The shell includes the minimal HTML, CSS, and JavaScript required to power the 
+                user interface, which can be cached for instant loading on repeat visits.
+            </p>
+            
+            <h3>Key Components of App Shell</h3>
+            <ul class="content-list">
+                <li><strong>Static Shell:</strong> The basic UI framework that remains consistent across pages</li>
+                <li><strong>Dynamic Content:</strong> Page-specific content loaded separately from the shell</li>
+                <li><strong>Cached Resources:</strong> Critical assets stored locally for offline access</li>
+                <li><strong>Navigation Structure:</strong> Persistent navigation elements in the shell</li>
+            </ul>
+
+            <h3>Benefits of App Shell Pattern</h3>
+            <ol class="content-list">
+                <li>Reliable performance with instant loading</li>
+                <li>Native-like navigation without page refreshes</li>
+                <li>Efficient use of cache storage</li>
+                <li>Separation of concerns between UI and content</li>
+            </ol>
+        </section>
+
+        <!-- Caching Strategies -->
+        <section>
+            <h2>Caching Strategies</h2>
+            <p>
+                Service workers enable various caching strategies to optimize performance and provide offline 
+                functionality. Choosing the right strategy depends on the type of resource and your application's needs.
+            </p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Strategy</th>
+                        <th>Description</th>
+                        <th>Best Used For</th>
+                        <th>Offline Support</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Cache First</td>
+                        <td>Serves from cache, falls back to network</td>
+                        <td>Static assets (CSS, JS, images)</td>
+                        <td>Excellent</td>
+                    </tr>
+                    <tr>
+                        <td>Network First</td>
+                        <td>Tries network first, falls back to cache</td>
+                        <td>Dynamic content, API calls</td>
+                        <td>Good</td>
+                    </tr>
+                    <tr>
+                        <td>Cache Only</td>
+                        <td>Only serves from cache</td>
+                        <td>Pre-cached static resources</td>
+                        <td>Perfect</td>
+                    </tr>
+                    <tr>
+                        <td>Network Only</td>
+                        <td>Only uses network requests</td>
+                        <td>Real-time data, analytics</td>
+                        <td>None</td>
+                    </tr>
+                    <tr>
+                        <td>Stale While Revalidate</td>
+                        <td>Serves cache, updates in background</td>
+                        <td>Frequently updated content</td>
+                        <td>Good</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Service Worker Lifecycle -->
+        <section>
+            <h2>Service Worker Lifecycle</h2>
+            <p>
+                Understanding the service worker lifecycle is crucial for proper PWA implementation. The lifecycle 
+                ensures that updates are handled gracefully without disrupting the user experience.
+            </p>
+
+            <div class="concept-card">
+                <h3>1. Registration</h3>
+                <p>
+                    The service worker is registered from your main JavaScript file. This tells the browser where 
+                    the service worker file is located and begins the installation process.
+                </p>
+            </div>
+
+            <div class="concept-card">
+                <h3>2. Installation</h3>
+                <p>
+                    During installation, the service worker can cache essential resources. This is typically where 
+                    you define your app shell and critical assets for offline functionality.
+                </p>
+            </div>
+
+            <div class="concept-card">
+                <h3>3. Activation</h3>
+                <p>
+                    After installation, the service worker enters the activation phase. This is the ideal time to 
+                    clean up old caches and perform any necessary migrations from previous versions.
+                </p>
+            </div>
+
+            <div class="concept-card">
+                <h3>4. Fetch Events</h3>
+                <p>
+                    Once activated, the service worker can intercept network requests and respond with cached 
+                    content or fetch new resources based on your caching strategy.
+                </p>
+            </div>
+        </section>
+
+        <!-- Performance Optimization -->
+        <section>
+            <h2>Performance Optimization Patterns</h2>
+            
+            <h3>PRPL Pattern</h3>
+            <p>
+                PRPL is a pattern for structuring and serving PWAs with an emphasis on performance. It stands for:
+            </p>
+            <ul class="content-list">
+                <li><strong>Push:</strong> Push critical resources for the initial route</li>
+                <li><strong>Render:</strong> Render the initial route quickly</li>
+                <li><strong>Pre-cache:</strong> Pre-cache remaining routes</li>
+                <li><strong>Lazy-load:</strong> Lazy-load and create remaining routes on demand</li>
+            </ul>
+
+            <h3>Code Splitting</h3>
+            <p>
+                Code splitting involves breaking your JavaScript bundle into smaller chunks that can be loaded 
+                on demand. This reduces initial load time and improves perceived performance.
+            </p>
+
+            <h3>Resource Prioritization</h3>
+            <ol class="content-list">
+                <li>Critical rendering path resources (HTML, CSS for above-the-fold content)</li>
+                <li>Essential JavaScript for interactivity</li>
+                <li>Web fonts and icon sets</li>
+                <li>Images and media content</li>
+                <li>Analytics and third-party scripts</li>
+            </ol>
+        </section>
+
+        <!-- Web App Manifest Structure -->
+        <section>
+            <h2>Web App Manifest Configuration</h2>
+            <p>
+                The web app manifest provides metadata about your PWA and controls how it appears when installed. 
+                Here are the key properties you should configure:
+            </p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Property</th>
+                        <th>Purpose</th>
+                        <th>Required</th>
+                        <th>Example Value</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>name</td>
+                        <td>Full name of the app</td>
+                        <td>Yes</td>
+                        <td>"My Progressive Web App"</td>
+                    </tr>
+                    <tr>
+                        <td>short_name</td>
+                        <td>Short name for home screen</td>
+                        <td>Yes</td>
+                        <td>"MyPWA"</td>
+                    </tr>
+                    <tr>
+                        <td>start_url</td>
+                        <td>Starting URL when launched</td>
+                        <td>Yes</td>
+                        <td>"/"</td>
+                    </tr>
+                    <tr>
+                        <td>display</td>
+                        <td>Display mode</td>
+                        <td>Yes</td>
+                        <td>"standalone"</td>
+                    </tr>
+                    <tr>
+                        <td>background_color</td>
+                        <td>Splash screen background</td>
+                        <td>No</td>
+                        <td>"#ffffff"</td>
+                    </tr>
+                    <tr>
+                        <td>theme_color</td>
+                        <td>Theme color for UI</td>
+                        <td>No</td>
+                        <td>"#4A90E2"</td>
+                    </tr>
+                    <tr>
+                        <td>icons</td>
+                        <td>Array of app icons</td>
+                        <td>Yes</td>
+                        <td>[{src, sizes, type}]</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Architecture diagram -->
+        <section class="featured-image">
+            <img src="https://via.placeholder.com/800x400/6f42c1/FFFFFF?text=PWA+Architecture+Layers" 
+                 alt="PWA Architecture Layers Diagram">
+            <p class="image-caption">Layered architecture of a Progressive Web App showing service worker, cache, and network interactions</p>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <p>This is a class project for <a href="https://ksuweb.github.io/IT3203/" target="_blank">IT 3203 Web Development</a></p>
+        <p>&copy; 2024 PWA Research Project</p>
+    </footer>
+</body>
+</html>

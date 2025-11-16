@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PWA Fundamentals - Progressive Web Apps</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    
+    <nav class="main-nav">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="fundamentals.html" class="active">Fundamentals</a></li>
+            <li><a href="architecture.html">Architecture</a></li>
+            <li><a href="concepts.html">Key Concepts</a></li>
+            <li><a href="references.html">References</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="quiz.html">Quiz</a></li>
+        </ul>
+    </nav>
+
+    
+    <main class="container">
+        <header class="page-header">
+            <h1>PWA Fundamentals</h1>
+        </header>
+
+        
+        <section>
+            <h2>What Are Progressive Web Apps?</h2>
+            <p>
+                Progressive Web Apps (PWAs) are web applications that use modern web capabilities to deliver 
+                app-like experiences to users. They are built using standard web technologies including HTML, 
+                CSS, and JavaScript, but behave like native applications on mobile and desktop platforms.
+            </p>
+            <p>
+                The term "progressive" refers to the fact that these apps work for every user, regardless of 
+                browser choice, because they are built with progressive enhancement as a core principle. They 
+                progressively add features based on the capabilities of the user's device and browser.
+            </p>
+        </section>
+
+        
+        <section>
+            <h2>Core Characteristics of PWAs</h2>
+            <ul class="content-list">
+                <li><strong>Progressive:</strong> Work for every user, regardless of browser choice</li>
+                <li><strong>Responsive:</strong> Fit any form factor - desktop, mobile, tablet</li>
+                <li><strong>Connectivity Independent:</strong> Work offline or on low-quality networks</li>
+                <li><strong>App-like:</strong> Feel like an app with app-style interactions and navigation</li>
+                <li><strong>Fresh:</strong> Always up-to-date thanks to service worker update process</li>
+                <li><strong>Safe:</strong> Served via HTTPS to prevent tampering</li>
+                <li><strong>Discoverable:</strong> Identifiable as applications via W3C manifests</li>
+                <li><strong>Re-engageable:</strong> Make re-engagement easy through features like push notifications</li>
+                <li><strong>Installable:</strong> Can be installed on device home screen without app store</li>
+                <li><strong>Linkable:</strong> Easily shared via URL without complex installation</li>
+            </ul>
+        </section>
+
+        
+        <section>
+            <h2>Essential Building Blocks</h2>
+            
+            <h3>1. Service Workers</h3>
+            <p>
+                Service workers are JavaScript files that run separately from the main browser thread, intercepting 
+                network requests, caching resources, and enabling background sync. They are the backbone of PWA 
+                offline functionality and provide capabilities that were previously exclusive to native apps.
+            </p>
+
+            <h3>2. Web App Manifest</h3>
+            <p>
+                The web app manifest is a JSON file that tells the browser about your web application and how it 
+                should behave when installed on the user's device. It controls how the app appears to users, 
+                defines its start URL, display mode, icons, and theme colors.
+            </p>
+
+            <h3>3. HTTPS</h3>
+            <p>
+                PWAs must be served over HTTPS to ensure security and privacy. This requirement protects users from 
+                man-in-the-middle attacks and ensures that service workers can only be registered on secure origins.
+            </p>
+        </section>
+
+        
+        <section>
+            <h2>PWAs vs Traditional Web Apps vs Native Apps</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Feature</th>
+                        <th>Traditional Web App</th>
+                        <th>Progressive Web App</th>
+                        <th>Native App</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Offline Functionality</td>
+                        <td>No</td>
+                        <td>Yes</td>
+                        <td>Yes</td>
+                    </tr>
+                    <tr>
+                        <td>App Store Required</td>
+                        <td>No</td>
+                        <td>No</td>
+                        <td>Yes</td>
+                    </tr>
+                    <tr>
+                        <td>Installation</td>
+                        <td>Not applicable</td>
+                        <td>Optional, via browser</td>
+                        <td>Required, via app store</td>
+                    </tr>
+                    <tr>
+                        <td>Push Notifications</td>
+                        <td>Limited</td>
+                        <td>Yes</td>
+                        <td>Yes</td>
+                    </tr>
+                    <tr>
+                        <td>Updates</td>
+                        <td>Automatic</td>
+                        <td>Automatic</td>
+                        <td>Manual via store</td>
+                    </tr>
+                    <tr>
+                        <td>Cross-platform</td>
+                        <td>Yes</td>
+                        <td>Yes</td>
+                        <td>No (requires separate builds)</td>
+                    </tr>
+                    <tr>
+                        <td>Development Cost</td>
+                        <td>Low</td>
+                        <td>Medium</td>
+                        <td>High</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        
+        <section>
+            <h2>Benefits of PWAs</h2>
+            
+            <div class="concept-card">
+                <h3>For Users</h3>
+                <ul class="content-list">
+                    <li>Fast loading times, even on slow networks</li>
+                    <li>Offline functionality for uninterrupted access</li>
+                    <li>Less storage space compared to native apps</li>
+                    <li>No need to visit app stores for installation</li>
+                    <li>Automatic updates without user intervention</li>
+                </ul>
+            </div>
+
+            <div class="concept-card">
+                <h3>For Developers</h3>
+                <ul class="content-list">
+                    <li>Single codebase for all platforms</li>
+                    <li>Easier maintenance and updates</li>
+                    <li>No app store approval process</li>
+                    <li>Reduced development costs</li>
+                    <li>Better SEO compared to native apps</li>
+                </ul>
+            </div>
+
+            <div class="concept-card">
+                <h3>For Businesses</h3>
+                <ul class="content-list">
+                    <li>Increased user engagement</li>
+                    <li>Higher conversion rates</li>
+                    <li>Lower customer acquisition costs</li>
+                    <li>Improved performance metrics</li>
+                    <li>Greater reach across devices and platforms</li>
+                </ul>
+            </div>
+        </section>
+
+        
+        <section class="featured-image">
+            <img src="https://via.placeholder.com/800x400/28a745/FFFFFF?text=PWA+Core+Technologies" 
+                 alt="PWA Core Technologies Diagram">
+            <p class="image-caption">The three pillars of Progressive Web Apps: Service Workers, HTTPS, and Web App Manifest</p>
+        </section>
+    </main>
+
+    
+    <footer class="site-footer">
+        <p>This is a class project for <a href="https://ksuweb.github.io/IT3203/" target="_blank">IT 3203 Web Development</a></p>
+        <p>&copy; 2024 PWA Research Project</p>
+    </footer>
+</body>
+</html>
