@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Key Concepts - Progressive Web Apps</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation menu -->
+    <nav class="main-nav">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="fundamentals.html">Fundamentals</a></li>
+            <li><a href="architecture.html">Architecture</a></li>
+            <li><a href="concepts.html" class="active">Key Concepts</a></li>
+            <li><a href="references.html">References</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="quiz.html">Quiz</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main content -->
+    <main class="container">
+        <header class="page-header">
+            <h1>7 Key Concepts in Progressive Web Apps</h1>
+        </header>
+
+        <!-- Concept 1: Service Workers -->
+        <section class="concept-card">
+            <h2>1. Service Workers</h2>
+            <p>
+                Service workers are the technological foundation that enables PWAs to function offline and provide 
+                a native app-like experience. They act as a programmable network proxy, sitting between your web 
+                application and the network.
+            </p>
+            
+            <h3>How Service Workers Work</h3>
+            <p>
+                A service worker runs in a separate thread from the main browser thread, meaning it doesn't have 
+                access to the DOM but can intercept and handle network requests, manage cache storage, and handle 
+                background sync operations. This separation allows the service worker to run independently, even 
+                when the web page is closed.
+            </p>
+
+            <h3>Key Capabilities</h3>
+            <ul class="content-list">
+                <li>Intercept and modify network requests and responses</li>
+                <li>Cache resources for offline access</li>
+                <li>Enable background synchronization</li>
+                <li>Handle push notifications</li>
+                <li>Perform periodic background updates</li>
+            </ul>
+
+            <h3>Security Requirements</h3>
+            <p>
+                Service workers can only be registered on pages served over HTTPS (or localhost for development). 
+                This ensures that the service worker cannot be tampered with during transit and protects users 
+                from man-in-the-middle attacks.
+            </p>
+        </section>
+
+        <!-- Concept 2: Cache API -->
+        <section class="concept-card">
+            <h2>2. Cache API</h2>
+            <p>
+                The Cache API provides a storage mechanism for Request/Response object pairs that are cached in 
+                long-lived memory. It's specifically designed for service workers but can also be accessed from 
+                the main thread.
+            </p>
+
+            <h3>Cache Storage Organization</h3>
+            <p>
+                Caches are organized into named Cache objects that you can create and manage. Each cache can 
+                store multiple request-response pairs, allowing you to organize your cached resources logically 
+                (e.g., "app-shell-v1", "images-v1", "api-cache-v2").
+            </p>
+
+            <h3>Common Cache Operations</h3>
+            <ul class="content-list">
+                <li><strong>cache.put():</strong> Stores a request-response pair</li>
+                <li><strong>cache.add():</strong> Fetches and stores a resource</li>
+                <li><strong>cache.match():</strong> Retrieves a cached response</li>
+                <li><strong>cache.delete():</strong> Removes a cached item</li>
+                <li><strong>caches.open():</strong> Opens or creates a named cache</li>
+                <li><strong>caches.delete():</strong> Deletes an entire named cache</li>
+            </ul>
+
+            <h3>Cache Management Strategies</h3>
+            <p>
+                Effective cache management involves setting appropriate cache sizes, implementing cache versioning, 
+                and cleaning up old caches when deploying updates. This prevents unlimited cache growth and ensures 
+                users get the latest version of your application.
+            </p>
+        </section>
+
+        <!-- Concept 3: Web App Manifest -->
+        <section class="concept-card">
+            <h2>3. Web App Manifest</h2>
+            <p>
+                The web app manifest is a JSON file that provides metadata about your web application. It enables 
+                the "Add to Home Screen" functionality and controls how your PWA appears and behaves when installed 
+                on a user's device.
+            </p>
+
+            <h3>Essential Manifest Properties</h3>
+            <p>
+                The manifest includes properties like the app name, icons in various sizes, start URL, display 
+                mode, theme colors, and orientation preferences. These properties ensure your PWA provides a 
+                consistent, native-like experience across different devices and platforms.
+            </p>
+
+            <h3>Display Modes</h3>
+            <ul class="content-list">
+                <li><strong>fullscreen:</strong> Opens in fullscreen, hiding all browser UI</li>
+                <li><strong>standalone:</strong> Opens in a standalone window, looks like a native app</li>
+                <li><strong>minimal-ui:</strong> Shows minimal browser UI (back button, reload)</li>
+                <li><strong>browser:</strong> Opens in a regular browser tab</li>
+            </ul>
+
+            <h3>Icons and Visual Identity</h3>
+            <p>
+                Your manifest should include icons in multiple sizes (typically 192x192 and 512x512 pixels) to 
+                ensure sharp display on different devices and contexts. The theme_color property defines the 
+                toolbar color and affects the app's appearance in the task switcher.
+            </p>
+        </section>
+
+        <!-- Concept 4: Progressive Enhancement -->
+        <section class="concept-card">
+            <h2>4. Progressive Enhancement</h2>
+            <p>
+                Progressive enhancement is a design philosophy that ensures your PWA works for all users, 
+                regardless of their browser capabilities, while progressively adding advanced features for 
+                browsers that support them.
+            </p>
+
+            <h3>Core Functionality First</h3>
+            <p>
+                The foundation of progressive enhancement is building core functionality using basic web 
+                technologies that work everywhere. This base layer should provide essential features using 
+                standard HTML and CSS, ensuring accessibility for all users.
+            </p>
+
+            <h3>Feature Detection</h3>
+            <p>
+                Rather than assuming browser support, PWAs should use feature detection to determine what 
+                capabilities are available. This allows you to conditionally enable features like service 
+                workers, push notifications, or offline functionality only when supported.
+            </p>
+
+            <h3>Graceful Degradation</h3>
+            <ul class="content-list">
+                <li>Provide fallbacks for unsupported features</li>
+                <li>Ensure content is accessible without JavaScript</li>
+                <li>Maintain functionality on older browsers</li>
+                <li>Test across multiple browsers and devices</li>
+                <li>Use polyfills strategically for critical features</li>
+            </ul>
+        </section>
+
+        <!-- Concept 5: Responsive Design -->
+        <section class="concept-card">
+            <h2>5. Responsive Design</h2>
+            <p>
+                Responsive design ensures your PWA adapts seamlessly to different screen sizes, orientations, 
+                and input methods. This is crucial since PWAs run on everything from smartphones to desktop 
+                computers.
+            </p>
+
+            <h3>Fluid Layouts</h3>
+            <p>
+                Use relative units (percentages, em, rem, vw, vh) instead of fixed pixel values to create 
+                layouts that adapt to different screen sizes. CSS Grid and Flexbox are powerful tools for 
+                building flexible, responsive layouts.
+            </p>
+
+            <h3>Mobile-First Approach</h3>
+            <p>
+                Start by designing for mobile devices, then progressively enhance the experience for larger 
+                screens. This ensures your PWA works well on resource-constrained devices and slower networks, 
+                where optimization matters most.
+            </p>
+
+            <h3>Media Queries and Breakpoints</h3>
+            <p>
+                Use CSS media queries to apply different styles based on screen size, resolution, and 
+                orientation. Common breakpoints target phones (up to 768px), tablets (768px-1024px), and 
+                desktops (1024px and above), but should be tailored to your content's needs.
+            </p>
+
+            <h3>Touch and Mouse Support</h3>
+            <p>
+                Design interactive elements that work well with both touch and mouse input. Ensure buttons 
+                and links are large enough for touch targets (minimum 44x44 pixels) and provide appropriate 
+                hover states for mouse users.
+            </p>
+        </section>
+
+        <!-- Concept 6: HTTPS and Security -->
+        <section class="concept-card">
+            <h2>6. HTTPS and Security</h2>
+            <p>
+                HTTPS is not optional for PWAs—it's a fundamental requirement. Service workers can only be 
+                registered on secure origins, ensuring that your PWA's code cannot be tampered with in transit.
+            </p>
+
+            <h3>Why HTTPS Matters</h3>
+            <p>
+                HTTPS encrypts all communication between the user's browser and your server, preventing 
+                attackers from intercepting sensitive data or injecting malicious code. This protection is 
+                especially critical for PWAs because service workers have powerful capabilities like 
+                intercepting all network requests.
+            </p>
+
+            <h3>Content Security Policy</h3>
+            <p>
+                Implement a Content Security Policy (CSP) to provide an additional layer of security. CSP 
+                helps prevent cross-site scripting (XSS) attacks by specifying which sources of content are 
+                trusted and can be loaded by your PWA.
+            </p>
+
+            <h3>Secure Storage</h3>
+            <ul class="content-list">
+                <li>Use IndexedDB or Cache API for client-side storage</li>
+                <li>Never store sensitive data like passwords in local storage</li>
+                <li>Implement proper authentication mechanisms</li>
+                <li>Use secure, httpOnly cookies for session management</li>
+                <li>Regularly update dependencies to patch security vulnerabilities</li>
+            </ul>
+        </section>
+
+        <!-- Concept 7: App Shell Model -->
+        <section class="concept-card">
+            <h2>7. App Shell Model</h2>
+            <p>
+                The app shell model is an architectural approach that separates your PWA's core application 
+                infrastructure from its content. The shell is the minimal HTML, CSS, and JavaScript needed 
+                to power the user interface, which loads instantly from the cache.
+            </p>
+
+            <h3>Benefits of App Shell Architecture</h3>
+            <p>
+                By caching the app shell separately from dynamic content, your PWA can provide instant loading 
+                and immediate responsiveness, even on slow or unreliable networks. The UI framework loads 
+                immediately from the cache, while content loads dynamically.
+            </p>
+
+            <h3>Shell Components</h3>
+            <ul class="content-list">
+                <li><strong>Navigation:</strong> Header, menu, and navigation elements</li>
+                <li><strong>Layout structure:</strong> Page containers and layout grids</li>
+                <li><strong>Core styles:</strong> Essential CSS for the UI framework</li>
+                <li><strong>JavaScript framework:</strong> Client-side routing and core functionality</li>
+            </ul>
+
+            <h3>Implementation Strategy</h3>
+            <p>
+                During the service worker installation phase, cache all app shell resources. On subsequent 
+                visits, serve the shell from the cache immediately while fetching dynamic content from the 
+                network. This approach provides the speed of a cached experience with the freshness of 
+                dynamic content.
+            </p>
+
+            <h3>Separating Shell from Content</h3>
+            <p>
+                Keep your app shell lean by only including resources necessary for the basic UI. Load 
+                page-specific content and features dynamically as needed. This separation reduces the 
+                initial payload and ensures fast, reliable loading of the core experience.
+            </p>
+        </section>
+
+        <!-- Summary image -->
+        <section class="featured-image">
+            <img src="https://www.csschopper.com/blog/wp-content/uploads/2023/10/Progressive-Web-Apps-The-Future-of-Web-Development-1-2048x1152.png" 
+                 alt="Key PWA Concepts Summary">
+            <p class="image-caption">These concepts form the foundation of modern Progressive Web App development</p>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <p>This is a class project for <a href="https://ksuweb.github.io/IT3203/" target="_blank">IT 3203 Web Development</a></p>
+        <p>&copy; 2024 PWA Research Project</p>
+    </footer>
+</body>
+</html>
